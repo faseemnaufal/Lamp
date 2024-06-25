@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+let imageIndex = -1; // Start at -1 to handle the first increment properly
+let round = 1;
+const images = [
+  './images/l2.png',
+  './images/l3.png',
+  './images/l4.png',
+  './images/l5.png'
+];
+const colors = [
+  'white',
+  'lightyellow',
+  'lightblue', 
+  'lightgreen'
+];
+
+function chgimg() {
+  imageIndex = (imageIndex + 1) % images.length;
+  if (imageIndex === 0 && round > 1) {
+    // Skip the l1 image after the first round
+    imageIndex = (imageIndex + 0) % images.length;
+  }
+  document.getElementById('i1').src = images[imageIndex];
+
+  if (imageIndex === 0) {
+    document.body.style.backgroundColor = colors[round % colors.length];
+    round++;
+  }
+}
+</script>
+</head>
+<body>
+<center>
+<h2>Welcome</h2>
+<img id="i1" src="./images/l1.png" /><br>
+<input type="button" value="Light the lamp" onclick="chgimg()" /><br>
+</center>
+</body>
+</html>
