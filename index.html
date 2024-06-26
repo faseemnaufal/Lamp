@@ -2,41 +2,68 @@
 <html>
 <head>
 <script type="text/javascript">
-let imageIndex = -1; // Start at -1 to handle the first increment properly
+let imageIndex = -1;
 let round = 1;
 const images = [
-  './images/l2.png',
-  './images/l3.png',
-  './images/l4.png',
-  './images/l5.png'
-];
-const colors = [
-  'white',
-  'lightyellow',
-  'lightblue', 
-  'lightgreen'
+  './images/li2.png',
+  './images/li3.png',
+  './images/li4.png',
+  './images/li5.png',
+  './images/li6.png',
+  './images/li7.png',
+  './images/li8.png',
+  './images/li9.png',
+  './images/li10.png',
+  './images/li11.png',
+  './images/li12.png',
+  './images/li13.png',
+  './images/li14.png',
+  './images/li15.png',
+  './images/li16.png',
+  './images/li17.png',
+  './images/li18.png',
+  './images/li19.png',
+  './images/li20.png',
+  './images/li21.png',
+  './images/li22.png',
+  './images/li23.png'
 ];
 
 function chgimg() {
   imageIndex = (imageIndex + 1) % images.length;
   if (imageIndex === 0 && round > 1) {
-    // Skip the l1 image after the first round
     imageIndex = (imageIndex + 0) % images.length;
   }
   document.getElementById('i1').src = images[imageIndex];
 
-  if (imageIndex === 0) {
-    document.body.style.backgroundColor = colors[round % colors.length];
-    round++;
+  if (imageIndex === images.length - 1) {
+    document.getElementById('lightButton').style.display = 'none';
   }
 }
+
+function resetImages() {
+  imageIndex = -1;
+  round = 1;
+  document.getElementById('i1').src = './images/li1.png';
+  document.getElementById('lightButton').style.display = 'inline';
+}
 </script>
+<style>
+  img#i1 {
+    width: auto;
+    height: 500px;
+  }
+  #lightButton {
+    background-color: aqua;
+  }
+</style>
 </head>
 <body>
 <center>
 <h2>Welcome</h2>
-<img id="i1" src="./images/l1.png" /><br>
-<input type="button" value="Light the lamp" onclick="chgimg()" /><br>
+<img id="i1" src="./images/li1.png" /><br>
+<input id="lightButton" type="button" value="Light the lamp" onclick="chgimg()" />
+<input type="button" value="Reset" onclick="resetImages()" /><br>
 </center>
 </body>
 </html>
